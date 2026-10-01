@@ -1,1 +1,109 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Explore sample schedules, reserve a demo seat, and manage the reservation. Switch to the operations view to see how capacity affects the traveler experience."><title>Flight Operations | Interactive demo</title><link rel="stylesheet" href="./style.css"></head><body><header><a href="https://pratiksha0108.github.io/portfolio/projects/">← All projects</a><span class="badge">Interactive sample</span></header><main><section class="hero"><p class="eyebrow">Travel workflow</p><h1>Find a route.<br>Make a plan.</h1><p class="intro">Explore sample schedules, reserve a demo seat, and manage the reservation. Switch to the operations view to see how capacity affects the traveler experience.</p><div class="notice">Browser adaptation of the Java desktop project. Fictional flights, prices and reservations. No airline connection, payment, real tickets or passenger details.</div></section><div id="app"></div><p id="status" class="status" role="status" aria-live="polite"></p></main><footer><span>Built by Pratiksha Shirsat · Session-only demo</span><a href="https://github.com/pratiksha0108/Flight-Management-System" target="_blank" rel="noreferrer">Original source ↗</a></footer><script type="module" src="./app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Boarding Lab: choose a route, select seats, and explore how bookings change operational capacity. A fictional, local-only flight product lab."
+    />
+    <meta name="theme-color" content="#304bea" />
+    <title>Boarding Lab | A better journey, by design.</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#app">Skip to workspace</a>
+    <header>
+      <a class="brand" href="./"
+        ><span>✈</span>boarding<span class="brand-small">LAB</span></a
+      >
+      <nav aria-label="Workspace">
+        <button data-tab="search" aria-current="page">Plan a trip</button
+        ><button data-tab="bookings">
+          My practice trips <span id="trip-count">0</span></button
+        ><button data-tab="ops">Control tower</button>
+      </nav>
+      <button id="about">About the lab ↗</button>
+    </header>
+    <main id="app" tabindex="-1">
+      <section class="empty"><h1>Preparing the cabin…</h1></section>
+    </main>
+    <div id="status" class="toast" role="status" aria-live="polite"></div>
+    <footer>
+      <span>Designed & built by Pratiksha Shirsat</span
+      ><a href="https://pratiksha0108.github.io/portfolio/projects/"
+        >All projects ↗</a
+      ><a href="https://github.com/pratiksha0108/Flight-Management-System"
+        >Source ↗</a
+      ><button id="motion">Pause motion</button
+      ><button id="reset">Reset this session</button>
+    </footer>
+    <dialog id="dialog">
+      <div class="dialog-top">
+        <span class="eyebrow">THE PRODUCT STORY</span
+        ><button id="close-dialog" aria-label="Close project details">✕</button>
+      </div>
+      <h2>One journey. Two perspectives.</h2>
+      <p>
+        Travelers need a clear booking flow. Operations teams need trustworthy
+        inventory. Boarding Lab connects both sides so you can see the effect of
+        each decision.
+      </p>
+      <h3>Try the whole loop</h3>
+      <ol>
+        <li>Search Chicago to New York with two travelers.</li>
+        <li>Choose two seats and create a practice reservation.</li>
+        <li>
+          Open Control tower for the same date. See the seats reflected in
+          occupancy.
+        </li>
+        <li>
+          Try reducing capacity below an assigned seat. The system protects that
+          booking.
+        </li>
+        <li>
+          Cancel the reservation and watch those seats become available again.
+        </li>
+      </ol>
+      <h3>What is real, and what is not?</h3>
+      <p>
+        The seat-selection and inventory logic works. The flights, dates, fares,
+        small cabin layouts, and reservations are fictional. City codes are
+        display labels, not exact airport identifiers. There are no airline
+        connections, payments, passenger details, tickets or cross-user
+        availability.
+      </p>
+      <p>
+        Cabin choice changes only the illustrative fare, not the seat layout. No
+        taxes, fees, connections, time-zone conversion, or actual fare rules are
+        modeled. Session data resets on reload.
+      </p>
+      <h3>Before this could be operational</h3>
+      <p>
+        A backend must provide transactional seat holds, expiry, idempotent
+        booking, authentication, reconciliation with an airline, and careful
+        handling of personal data. This prototype demonstrates interaction and
+        state rules, not a production reservation system.
+      </p>
+      <a
+        href="https://github.com/pratiksha0108/Flight-Management-System/blob/main/docs/product-brief.md"
+        >Read the product brief and acceptance criteria ↗</a
+      >
+    </dialog>
+    <noscript
+      ><p>
+        Enable JavaScript to explore this interactive prototype. No live airline
+        services are connected.
+      </p></noscript
+    >
+    <script>
+      window.bootFailure = function () {
+        if (document.documentElement.dataset.ready) return;
+        document.getElementById("app").innerHTML =
+          '<section class="empty"><h1>Let’s try that again.</h1><p>The workspace could not finish loading.</p><button onclick="location.href=location.pathname+\'?refresh=\'+Date.now()">Reload latest version ↻</button></section>';
+      };
+      window.bootTimer = setTimeout(window.bootFailure, 12000);
+    </script>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
